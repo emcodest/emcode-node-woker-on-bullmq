@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>
+      <%= title %>
+    </h1>
+    <p>Welcome to <%= title %>
+        <h3>Add Job</h3>
+        <form action="/add-job" method="POST">
+          <div class="form-group p-2">
+            <label>Job Queue Name</label>
+            <br>
+            <input name = "job_name" class="form-control" placeholder="Queue name" />
+            <br>
+            <label>Job Payload (JSON)</label>
+            <br>
+            <textarea  name = "body_json" rows="10" class="form-control" placeholder="Job JSON"></textarea>
+            <br>
+            <button class="btn btn-primary">Send Job</button>
+            <% if(result){ %>
+              <br>
+              <br>
+              <div class="alert <%= value.status == true ? 'alert-success' : 'alert-danger'  %>">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Message</strong>
+                <hr>
+                <%= value.message %>
+              </div>
+
+
+              <% } %>
+
+          </div>
+
+        </form>
+    </p>
+  </div>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
